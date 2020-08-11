@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_044202) do
+ActiveRecord::Schema.define(version: 2020_08_13_031851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -951,7 +951,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_044202) do
     t.jsonb "data", default: {}, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
   create_table "rating_votes", force: :cascade do |t|
