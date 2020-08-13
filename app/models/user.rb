@@ -13,6 +13,8 @@ class User < ApplicationRecord
       PROFIE_FIELDS =
         (Profiles::ExtractData::DIRECT_ATTRIBUTES + Profiles::ExtractData::MAPPED_ATTRIBUTES.values).freeze
 
+      default_scope { includes(:profile) } # rubocop:disable Rails/DefaultScope
+
       # All new users should automatically have a profile
       after_create_commit { Profile.create(user: self, data: Profiles::ExtractData.call(self)) }
 
